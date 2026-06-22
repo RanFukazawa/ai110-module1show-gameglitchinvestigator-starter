@@ -87,8 +87,13 @@ low, high = get_range_for_difficulty(difficulty)
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
-if "secret" not in st.session_state:
+# Fix: Regenerates the secret number whenever changing a different difficulty
+if "secret" not in st.session_state or st.session_state.get("difficulty") != difficulty:
     st.session_state.secret = random.randint(low, high)
+    st.session_state.attempts = 0
+    st.session_state.status = "playing"
+    st.session_state.history = []
+    st.session_state.difficulty = difficulty
 
 if "attempts" not in st.session_state:
     st.session_state.attempts = 0 # Fix: 3) Change the attempt from 1 to 0 (for update_score())
@@ -105,8 +110,9 @@ if "history" not in st.session_state:
 st.subheader("Make a guess")
 
 # FIXME: The range of number needs to change according to the difficulty
+# Fix: 1) The range was hardcoded (1-100), so change it to match with the difficulties
 st.info(
-    f"Guess a number between 1 and 100. "
+    f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
@@ -133,7 +139,7 @@ with col3:
 # FIXME: State is not refreshed
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.secret = random.randint(low, high) # Fix: 2) Range changed to low and high (initially hardcoded to be 1-100 regardless of difficulties)
     st.success("New game started.")
     st.rerun()
 
