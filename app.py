@@ -137,9 +137,13 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 # FIXME: State is not refreshed
+# Fix: Added .score = 0, .status = "playing" and .history = [] to reset
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(low, high) # Fix: 2) Range changed to low and high (initially hardcoded to be 1-100 regardless of difficulties)
+    st.session_state.score = 0
+    st.session_state.secret = random.randint(low, high) # Fix: 2) Range changed from hardcoded 1-100 to low and high variables
+    st.session_state.status = "playing"
+    st.session_state.history = []
     st.success("New game started.")
     st.rerun()
 
