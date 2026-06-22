@@ -33,11 +33,13 @@ It wrote the code, ran away, and now the game is unplayable.
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Check the main screen or the sidebar to confirm difficulty (default: Normal, range 1–100, 8 attempts) — change it via the dropdown if desired
+2. Enter a guess (e.g., 50) — game returns "Too High" or "Too Low" and updates the score
+3. Narrow down with the next guess (e.g., 25) — game returns "Too Low"
+4. Continue guessing; score updates after each attempt (correct guess awards points, wrong guess deducts)
+5. If stuck, expand "Developer Debug Info" to see the secret number, attempt count, guess history, and current score
+6. Game ends when the correct number is guessed or all attempts are used up
+7. Click "New Game" to reset the state, clear history, and start a fresh round
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
