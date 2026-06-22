@@ -52,17 +52,12 @@ def check_guess(guess, secret):
 # FIXME: Scoring calculation is wrong
 def update_score(current_score: int, outcome: str, attempt_number: int):
     if outcome == "Win":
-        points = 100 - 10 * (attempt_number + 1)
+        points = 100 - 10 * attempt_number # Fix: 1) remove +1 from attempt_number + 1 (this caused off-by-one) 
         if points < 10:
             points = 10
         return current_score + points
 
-    if outcome == "Too High":
-        if attempt_number % 2 == 0:
-            return current_score + 5
-        return current_score - 5
-
-    if outcome == "Too Low":
+    if outcome == "Too High" or outcome == "Too Low": # Fix: 2) every wrong guess should be fixed -5 points
         return current_score - 5
 
     return current_score
@@ -96,7 +91,7 @@ if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    st.session_state.attempts = 0 # Fix: 3) Change the attempt from 1 to 0 (for update_score())
 
 if "score" not in st.session_state:
     st.session_state.score = 0
