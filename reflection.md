@@ -4,7 +4,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
+<!-- What did the game look like the first time you ran it?
 1.  After winning the game within the expected attempts left, I clicked to start the new game and it allowed me to input new number but did not run. 
     - broken, state not refreshed?
     - history not cleared after clicking start new game
@@ -15,7 +15,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 5. Wrong range (range not matching with the main screen) shown in the setting side bar.
     - When playing for the first time, the attempts left shown in the main screen is actually one time fewer than the actual attempts the player can play and the count followed that. -> side bar shows Attempts left: 8 (for Normal), but main screen shows Attempts left: 7 and can only guess for 7 times (missing one more attempt) -> Inside the "Developer Debug Info", Attempts: 1 is the default, so this needs to be changed to 0.
 - List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+  (for example: "the hints were backwards"). -->
 
 **Bug Reproduction Log**
 
